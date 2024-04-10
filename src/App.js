@@ -3,6 +3,7 @@ import SideMenu from "./components/SideMenu";
 import Home from "./components/Home";
 import {Provider} from 'react-redux' 
 import appStore from "./redux-store/appStore";
+import CreateUser from "./components/CreateUser";
 
 const AppLayout = () => {
   return (
@@ -21,7 +22,7 @@ const App = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    children: [{ path: "/", element: <Home /> }],
+    children: [{ path: "/", element: <Home /> }, {path: "/character/new" , element: <CreateUser/>}],
   },
 ]);
 

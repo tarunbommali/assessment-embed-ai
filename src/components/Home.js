@@ -21,6 +21,16 @@ const Home = () => {
     );
   };
 
+  const renderBootomView = () => {
+    return (
+      <div className="h-[50%] flex justify-center flex-col">
+        <h1>Create a Character</h1>
+        <p>Not vibing with any characters? Create one of your own! Customize things like their voice, conversation starts, their tone, and more!</p>
+
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-col bg-[#18181b] min-h-[100%] px-12 py-6">
       {renderSearchInput()}
@@ -32,6 +42,8 @@ const Home = () => {
     {data && data[0]?.result?.data?.json?.characters && (
         <CardList cardsList={data[0].result.data.json.characters} title={"Featured"}/>
       )}
+
+      {renderBootomView()}
     </div>
   );
 };
