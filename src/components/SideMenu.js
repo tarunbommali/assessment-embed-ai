@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 const SideMenu = () => {
   return (
     <div className='flex  flex-col justify-between w-[15%] bg-[#131316] text-white border-l border-2 px-4 border-[#26272b]'>

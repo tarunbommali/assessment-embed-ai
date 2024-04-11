@@ -1,9 +1,11 @@
 import React from "react";
-import useDiscoveryData from "../custom-hooks/useDiscoveryData";
+// import useDiscoveryData from "../custom-hooks/useDiscoveryData";
 import CardList from "./CardList";
+import cardDataList from "../utils/hardCodeCardList";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const data = useDiscoveryData();
+  // const data = useDiscoveryData();
 
   const renderSearchInput = () => {
     return (
@@ -20,13 +22,24 @@ const Home = () => {
       </div>
     );
   };
+  const renderImages = () => {
+    return (
+      <div className="flex justify-center items-center text-center my-4">
+        <img src="https://character.ai/_next/image?url=%2Fhomeassets%2Fnoblewoman.webp&w=96&q=25" alt="" className="rounded-xl" />
+        <img src="https://character.ai/_next/image?url=%2Fhomeassets%2Fzeus.webp&w=128&q=25" alt=""  className="rounded-xl"/>
+        <img src="https://character.ai/_next/image?url=%2Fhomeassets%2Fphilosopher.webp&w=96&q=25" alt="" className="rounded-xl" />
+      </div>
+
+    )
+  }
 
   const renderBootomView = () => {
     return (
-      <div className="h-[50%] flex justify-center flex-col">
-        <h1>Create a Character</h1>
-        <p>Not vibing with any characters? Create one of your own! Customize things like their voice, conversation starts, their tone, and more!</p>
-
+      <div className="w-[400px] flex justify-center flex-col">
+        {renderImages()}
+        <h1 className="text-xl my-4">Create a Character</h1>
+        <p className="text-[#a2a2ac]">Not vibing with any characters? Create one of your own! Customize things like their voice, conversation starts, their tone, and more!</p>
+       <div className="my-8"> <Link to="/character/new" className='flex-end  bg-[#ffffff] items-end rounded-3xl text-black px-4 py-2 my-3'>✨ Create a Character</Link></div>
       </div>
     )
   }
@@ -35,15 +48,13 @@ const Home = () => {
     <div className="flex flex-col bg-[#18181b] min-h-[100%] px-12 py-6">
       {renderSearchInput()}
       <div className="bg-[#6a6a6a] h-[300px] rounded-3xl"></div>
-      {data && data[0]?.result?.data?.json?.characters && (
-        <CardList cardsList={data[0].result.data.json.characters} title={"For You"}/>
-      )}
 
-    {data && data[0]?.result?.data?.json?.characters && (
-        <CardList cardsList={data[0].result.data.json.characters} title={"Featured"}/>
-      )}
-
+        <CardList cardsList={cardDataList} title={"For you"} />
+      
+        <CardList cardsList={cardDataList} title={"Featured"}/>
+    <div className="flex justify-center items-center text-center  h-[90vh] ">
       {renderBootomView()}
+      </div>
     </div>
   );
 };

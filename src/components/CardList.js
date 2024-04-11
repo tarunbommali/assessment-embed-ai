@@ -7,7 +7,7 @@ const CardList = ({ title, cardsList }) => {
       <div className="flex overflow-x-scroll">
         <div className="flex">
           {cardsList?.map((card) => (
-            <CardItem key={card.title} cardData={card} />
+            <CardItem key={card.name} cardData={card} />
           ))}
         </div>
       </div>
