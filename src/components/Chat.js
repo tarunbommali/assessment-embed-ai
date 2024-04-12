@@ -8,9 +8,9 @@ const Chat = () => {
   const userName = useSelector((state) => state.user.userName);
 
   if (userName === null) {
-    return  alert("Please log in to continue.");
-
+    return  <div className="flex justify-center items-center my-4 text-white">"Please sign in to continue."</div>
   }
+  
   const userData = cardDataList.filter((user) => user.user__username === id);
   const {
     name,

@@ -6,8 +6,9 @@ import { useSelector } from "react-redux";
 const CreateUser = () => {
   const userName = useSelector((state) => state.user.userName);
 
+  
   if (userName === null) {
-    return alert("Please sign in to continue.");
+    return  <div className="flex justify-center items-center my-4 text-white">"Please sign in to continue."</div>
   }
 
   return (

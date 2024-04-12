@@ -6,34 +6,29 @@ import { auth } from "../config/firebase";
 import { FaChevronDown } from "react-icons/fa";
 import { IoIosLogOut, IoMdSettings } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
-
-import Popup from 'reactjs-popup';
+import SettingModal from "./SettingModal";
 
 const GoogleSignInButton = () => {
   const provider = new GoogleAuthProvider();
   const dispatch = useDispatch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-
+  const [isSettingOpen, setIsSettingOpen] = useState(false); // State to control the visibility of the settings modal
   const userName = useSelector((state) => state.user.userName);
 
   const handleSignInWithGoogle = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        // Handle successful sign-in
-        const userName = result.user.displayName; // Get the user's display name
-        dispatch(setIsLogin(userName)); // Dispatch action to set user login status
-
+        const userName = result.user.displayName;
+        dispatch(setIsLogin(userName));
         console.log("Successfully signed in with Google:", result.user);
       })
       .catch((error) => {
-        // Handle errors
         console.error("Error signing in with Google:", error);
       });
   };
 
   const handleLogout = () => {
-    // Dispatch action to handle logout
     dispatch(setIsLogout());
     setIsDropdownOpen(false);
   };
@@ -70,23 +65,21 @@ const GoogleSignInButton = () => {
             className="flex justify-between items-center bg-[#131316] text-white rounded-md px-4 my-2 py-4 hover:bg-[#3f3f46]"
             onClick={handleToggleDropdown}
           >
-            <span className="bg-[#0d2662] rounded-full px-3 font-bold py-1">{userName[0]}</span>{userName} <p className="mx-1"><FaChevronDown /></p>
+            <span className="bg-[#0d2662] rounded-full px-3 font-bold py-1">
+              {userName[0]}
+            </span>
+            {userName} <p className="mx-1"><FaChevronDown /></p>
           </div>
           {isDropdownOpen && (
             <div className="absolute right-0 bottom-full w-full text-white bg-[#26272b] shadow-md rounded-md mt-2" ref={dropdownRef}>
-              <Popup
-                trigger={
-                  <button className="flex justify-between items-center  w-full text-left px-4 py-2 hover:bg-[#202024]">
-                    Setting <IoMdSettings />
-                  </button>
-                }
-                position="right center"
-                closeOnDocumentClick
+              <button
+                className="flex justify-between items-center  w-full text-left px-4 py-2 hover:bg-[#202024]"
+                onClick={() => {
+                  setIsSettingOpen(!isSettingOpen); // Toggle the settings modal
+                }}
               >
-                <div className="flex flex-col bg-white px-4 py-2 text-lg rounded-lg">
-                  <h1>Preference</h1>
-                </div>
-              </Popup>
+                Setting <IoMdSettings />
+              </button>
               <button
                 className="flex justify-between items-center  w-full text-left px-4 py-2 hover:bg-[#202024]"
               >
@@ -98,10 +91,13 @@ const GoogleSignInButton = () => {
               >
                 Logout <IoIosLogOut />
               </button>
-              {/* Add more menu items as needed */}
             </div>
           )}
         </div>
+      )}
+      {/* Settings modal */}
+      {isSettingOpen && (
+        <SettingModal setIsSettingOpen={setIsSettingOpen} />
       )}
     </div>
   );
