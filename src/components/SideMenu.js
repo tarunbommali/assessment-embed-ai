@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import GoogleSignInButton from './GoogleSignInButton'
 
 const SideMenu = () => {
   return (
@@ -13,7 +13,7 @@ const SideMenu = () => {
         </Link>
         <Link to="/" className='px-6 py-2 rounded-sm my-2 bg-[#3f4347]'>🚀 Discovery</Link>
         </div>
-        <button className='bg-white rounded-3xl text-black w-[100%] py-2 '>Sign in</button>
+        <GoogleSignInButton/>
     </div></div>
   ) 
 }

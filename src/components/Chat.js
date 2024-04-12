@@ -1,10 +1,16 @@
 import { useParams } from "react-router-dom";
 import cardDataList from "../utils/hardCodeCardList";
 import { NO_IMG_URL } from "../utils/constants";
+import {useSelector} from 'react-redux'
 
 const Chat = () => {
   const { id } = useParams();
+  const userName = useSelector((state) => state.user.userName);
 
+  if (userName === null) {
+    return  alert("Please log in to continue.");
+
+  }
   const userData = cardDataList.filter((user) => user.user__username === id);
   const {
     name,
@@ -26,6 +32,8 @@ const Chat = () => {
         
     )
   }
+
+
   
 
   return (
