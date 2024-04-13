@@ -5,18 +5,19 @@ import { Link } from "react-router-dom";
 import { NO_IMG_URL } from "../utils/constants";
 
 const CardItem = ({ cardData }) => {
-  // Always call useCommentFormatter, without any conditions
   const commentsCount = useCommentFormatter({
     count: cardData?.participant__num_interactions || 0,
   });
+  
 
   return (
     <Link
       to={`chat/${cardData.user__username}`}
-      className="flex bg-[#202024] rounded-md mx-2 my-2 px-4 py-2 w-[320px] h-[150px] hover:bg-[#2a2a2d]"
+      
+      className="flex bg-[#202024] rounded-md mx-2 my-2 px-4 py-2 w-[280px] h-[140px]  md:w-[320px] md:h-[150px] hover:bg-[#2a2a2d]"
     >
-      <div className="w-[120px] h-[100%]  mr-2 rounded-md bg-[#6a6a6a] ">
-        <img src={NO_IMG_URL} className="h-[100%]" alt="Icon No Download" />
+      <div className="w-[120px] h-[100%]  mr-2 rounded-md">
+        <img src={NO_IMG_URL} className="h-[100%] rounded-xl" alt="Icon No Download" />
       </div>
       <div className="flex flex-col ">
         <h1 className="font-semibold">{cardData?.name}</h1>

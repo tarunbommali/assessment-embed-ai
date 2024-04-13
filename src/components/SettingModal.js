@@ -29,15 +29,15 @@ const SettingModal = ({ setIsSettingOpen }) => {
               onChange={handleChange}
               className="text-white py-2 bg-[#26272b] outline-none border-none"
             >
-              <option value="english">English</option>
-              <option value="hindi">Hindi</option>
-              <option value="telugu">Telugu</option>
+              <option value="english" className="my-2">English</option>
+              <option value="hindi" className="my-2">Hindi</option>
+              <option value="telugu" className="my-2">Telugu</option>
             </select>
           </div>
           <div className="my-4 text-lg px-2 py-2 flex flex-col">
             Theme
             <div className="flex text-black">
-              <button className="px-4 py-2 mr-2 bg-white rounded-lg ">
+              <button className="px-4 py-2 mr-2 bg-white rounded-lg  ">
                 System
               </button>
               <button className="px-4 py-2 mr-2 bg-white rounded-lg ">

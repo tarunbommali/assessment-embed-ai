@@ -12,11 +12,11 @@ const CreateUser = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center p-4">
+    <div className="flex flex-col w-[100vw] justify-center items-center p-4">
       <Link to="/" className="text-4xl">
         🔙
       </Link>
-      <div className="w-[70%]">
+      <div className=" w-[80%] md:w-[60%]">
         <Formik
           initialValues={{
             character_name: "",

@@ -22,6 +22,14 @@ const GoogleSignInButton = () => {
         const userName = result.user.displayName;
         dispatch(setIsLogin(userName));
         console.log("Successfully signed in with Google:", result.user);
+        const ttl = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+        const now = new Date();
+        const userData = {
+          userDetails: result.user,
+          expiry: now.getTime() + ttl,
+        };
+        localStorage.setItem("userData", JSON.stringify(userData));
+
       })
       .catch((error) => {
         console.error("Error signing in with Google:", error);

@@ -15,7 +15,7 @@ const Home = () => {
   const renderSearchInput = () => {
     return (
       <div className="flex justify-between items-center my-4">
-        <div>
+        <div className="hidden md:block">
           {userName !== null && (
             <div className="flex flex-col">
               <span className="text-xl text-[#a2a2ac]">Welcome back,</span>
@@ -23,7 +23,7 @@ const Home = () => {
             </div>
           )}
         </div>
-        <div className="flex items-center   bg-[#202024] w-[30%] px-4 py-2 my-2 rounded-3xl">
+        <div className="flex items-center   bg-[#202024] w-[80%]  md:w-[30%] px-4 py-2 my-2 rounded-3xl">
           🔎
           <input
             type="search"
@@ -79,7 +79,7 @@ const Home = () => {
 
   const renderShuffelItem = () => {
     return (
-      <div className="flex justify-between px-6 py-4 bg-[#6a6a6a] h-[300px] rounded-3xl">
+      <div className="hidden md:flex justify-between px-6 py-4 bg-[#6a6a6a] h-[300px] rounded-3xl">
         <div className="felx justify-end mt-auto">
           <button><IoShuffleOutline/></button>
         </div>
@@ -116,7 +116,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col bg-[#18181b] min-h-[100%] px-12 py-6">
+    <div className="flex flex-col bg-[#18181b] min-h-[100%] w-auto px-6 md:px-12 py-6">
       {renderSearchInput()}
       {renderShuffelItem()}
 
