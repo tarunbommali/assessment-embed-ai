@@ -16,7 +16,7 @@ git clone https://github.com/tarunbommali/assessment-embed-ai
     - Custom Hooks: Created custom hooks for reusable logic.
     - Firebase Google Authentication: Implemented Google Authentication using Firebase.
     - react-router-dom (-v ^6.22.3)
-
+    - Lazy Loading (dynamic import , code spliting )
 
 ### Features:
     - Discovery Route [HOME]: Implemented a home route for discovering content.
